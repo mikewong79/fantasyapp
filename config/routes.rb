@@ -1,4 +1,11 @@
 Fantasyapp::Application.routes.draw do
+  resource :sessions, only: [:new, :create, :destroy]
+  resources :leagues do
+    resources :teams
+  end
+  resources :owners
+
+root 'leagues#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
