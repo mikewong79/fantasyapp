@@ -5,14 +5,16 @@ class Owner
 
   has_mongoid_attached_file :avatar
 
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
   field :first_name, type: String
   field :last_name, type: String
   field :email, type: String
   field :password_digest, type: String
   has_many :teams
   has_many :leagues
+
+  validates :email, uniqueness: :true, presence: :true
+  validates :first_name, :last_name, presence: :true
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def password
     @password
