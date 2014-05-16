@@ -1,9 +1,10 @@
 <h1>Welcome to the League, Please sign-up</h1>
 
-<%= form_for @owner do |f| %>
+<%= form_for @owner, :html => {:multipart => true} do |f| %>
   First Name: <%= f.text_field :first_name %><br/>
   Last Name: <%= f.text_field :last_name %><br/>
   Email: <%= f.text_field :email %><br/>
   Password: <%= f.password_field :password %><br/>
+  <%= f.file_field :avatar %><br />
   <%= f.submit %>
 <% end %>

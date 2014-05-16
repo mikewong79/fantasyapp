@@ -1,6 +1,6 @@
 class League
   include Mongoid::Document
   field :name, type: String
-  has_one :commissioner
+  belongs_to :owner
   has_many :teams
 end

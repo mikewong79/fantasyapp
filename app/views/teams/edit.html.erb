@@ -1,2 +1,10 @@
-<h1>Teams#edit</h1>
-<p>Find me in app/views/teams/edit.html.erb</p>
+<h1>Make Your Team Better</h1>
+
+<%= form_for [@league, @team] do |f| %>
+ Player to add: <%= f.collection_select :player_add, @players, :id, :name, :include_blank => true %>
+
+ Player to remove: <%= f.collection_select :players, @team_players, :id, :name, :include_blank => true %>
+  <%= f.submit %>
+<%end%>
+
+<%= link_to "Nevermind Take Me Back To League Page", league_path(params[:league_id]) %>

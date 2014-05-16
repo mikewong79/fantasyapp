@@ -1,11 +1,11 @@
-class SessionsController < ApplicationController
+ class SessionsController < ApplicationController
   def new
   end
 
   def create
     @owner = Owner.where(:email => params[:session][:email]).first
     if @owner == nil || !@owner.authenticate(params[:session][:password])
-      flash[:error] = "Invalid email/password combination"
+      flash[:danger] = "Invalid email/password combination"
       render 'new'
     else
       flash[:success] = "you are logged in"

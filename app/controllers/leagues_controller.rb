@@ -1,4 +1,6 @@
 class LeaguesController < ApplicationController
+  before_action :authenticate_owner, only: [:new]
+
   def index
     @leagues = League.all
   end
@@ -8,7 +10,7 @@ class LeaguesController < ApplicationController
   end
 
   def create
-    if League.create(params.require(:league).permit(:name, :commissioner, :owners))
+    if League.create(params.require(:league).permit(:name, :owner, :teams => []))
       redirect_to leagues_path
     else
       render 'new'
@@ -17,6 +19,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
+    @teams = Team.where(:league_id => @league.id)
   end
 
   def edit
@@ -24,7 +27,7 @@ class LeaguesController < ApplicationController
   end
 
   def update
-    if League.update(params.require(:league).permit(:name, :commissioner, :owners))
+    if League.update(params.require(:league).permit(:name, :owner, :teams => []))
       redirect_to leagues_path
     else
       render 'edit'

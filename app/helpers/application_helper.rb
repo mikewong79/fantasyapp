@@ -6,6 +6,7 @@ module ApplicationHelper
 
   def authenticate_owner
     if !current_owner
+      flash[:danger] = "You must login to take that action"
       redirect_to new_sessions_path
     end
   end

@@ -1,2 +1,12 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<h1>This is <%= @team.name %></h1>
+
+<ul>
+<% @players.each do |p| %>
+<li><%=p.name%></li>
+<%end%>
+
+</ul>
+<%= link_to "Back To League Page", league_path(params[:league_id]) %>
+<% if @team.owner == current_owner %><br />
+  <%= link_to "Make Some Changes To Your Team", edit_league_team_path(@league, @team) %>
+  <% end %>

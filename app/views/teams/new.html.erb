@@ -1,2 +1,6 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<%= form_for [@league, @team] do |f| %>
+  <%= f.hidden_field :owner, value: current_owner.id %><br/>
+  <%= f.hidden_field :league, value: @league.id %><br/>
+  Name: <%= f.text_field :name %><br />
+  <%= f.submit %>
+<% end %>
