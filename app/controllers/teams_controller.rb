@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
 
   def create
     Team.create(params.require(:team).permit(:owner, :name, :league, :players => []))
-    redirect_to :root
+    redirect_to league_path(params[:league_id])
   end
 
   def show

@@ -4,3 +4,5 @@
   Name: <%= f.text_field :name %><br />
   <%= f.submit %>
 <% end %>
+
+<%= link_to "Nevermind, I don't want to join this league", league_path(@league.id) %>
