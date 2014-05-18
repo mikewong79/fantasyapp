@@ -6,4 +6,5 @@ class Team
   has_many :players
 
   attr_accessor :player_add
+
 end

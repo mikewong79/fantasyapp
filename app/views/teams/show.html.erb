@@ -1,12 +1,12 @@
 <h1>This is <%= @team.name %></h1>
 
-<ul>
 <% @players.each do |p| %>
-<li><%=p.name%></li>
+<p><%=p.name%></p>
 <%end%>
 
-</ul>
+<% if @team.owner == current_owner %>
+  <%= link_to "Make Some Changes To Your Team", edit_league_team_path(@league, @team) %><br />
+<% else %>
+  <%= link_to "Send a Trade Offer", trade_path(@league, @team) %><br />
+<% end %>
 <%= link_to "Back To League Page", league_path(params[:league_id]) %>
-<% if @team.owner == current_owner %><br />
-  <%= link_to "Make Some Changes To Your Team", edit_league_team_path(@league, @team) %>
-  <% end %>

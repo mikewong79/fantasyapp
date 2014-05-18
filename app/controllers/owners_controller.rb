@@ -14,12 +14,13 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
+    @teams = Team.where(:owner => @owner)
   end
 
 
   protected
 
   def owner_params
-    params.require(:owner).permit(:first_name, :last_name, :email, :password, :avatar, :leagues => [], :teams => [])
+    params.require(:owner).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
   end
 end

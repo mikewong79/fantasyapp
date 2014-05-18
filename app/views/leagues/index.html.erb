@@ -1,5 +1,7 @@
 <h1>Here is a list of leagues!</h1>
 
 <% @leagues.each do |l| %>
-  <%= link_to l.name, league_path(l) %>
+  <%= link_to l.name, league_path(l) %><br />
 <% end %>
+<br />
+<%= link_to "Create a New League", new_league_path %>

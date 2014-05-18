@@ -4,8 +4,12 @@ Fantasyapp::Application.routes.draw do
     resources :teams
   end
   resources :owners
+  resources :emails, only: [:new, :create]
+  get 'leagues/:league_id/teams/:id/trade' => 'teams#trade', as: :trade
+  post 'emails/emailform' => 'emails#create'
 
-root 'leagues#index'
+  root 'leagues#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

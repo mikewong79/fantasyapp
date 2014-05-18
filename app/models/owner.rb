@@ -14,6 +14,7 @@ class Owner
 
   validates :email, uniqueness: :true, presence: :true
   validates :first_name, :last_name, presence: :true
+  validates_confirmation_of :password
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def password

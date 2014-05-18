@@ -1,9 +1,8 @@
-<h1>This is <%= @league.name %>.</h1>
-<ul>
+<h1>This is the <%= @league.name %> League.</h1>
+
   <% @teams.each do |t| %>
-  <li><%=link_to @owners.find(t.owner_id).first_name, owner_path(@owners.find(t.owner_id)) %> - <%=link_to t.name, league_team_path(@league, t) %></li>
+  <p><%=link_to (image_tag(t.owner.avatar.url, :class => "img-thumbnail")), owner_path(@owners.find(t.owner_id)) %> - <%=link_to t.name, league_team_path(@league, t) %></p>
   <%end%>
-</ul>
 
 
 <%= link_to "Add a team to this league", new_league_team_path(@league) %>

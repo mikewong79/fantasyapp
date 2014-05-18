@@ -1,0 +1,16 @@
+<% if @your_players %>
+  <%= form_for :email, { :url => '/emails/emailform'} do |e| %>
+    <%= e.hidden_field :owner, value: current_owner.first_name + ' ' + current_owner.last_name %>
+  	<%= e.hidden_field :name, value: @trade_owner.first_name %>
+  	<%= e.hidden_field :address, value: @trade_owner.email %>
+    <div class = "col-sm-12">
+    <%= e.collection_check_boxes :players_offered, @your_players, :name, :name, :item_wrapper_class => 'checkbox' %>
+    </div>
+    <div class = "col-sm-12">
+    <%= e.collection_check_boxes :players_wanted, @their_players, :name, :name %>
+    </div>
+  	<%= e.submit "Make This Trade Offer", class: "btn" %>
+  <% end %>
+<%else%>
+  <p>You don't have a team in this league.</p>
+<%end%>

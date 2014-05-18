@@ -1,10 +1,43 @@
 <h1>Welcome to the League, Please sign-up</h1>
 
 <%= form_for @owner, :html => {:multipart => true} do |f| %>
-  First Name: <%= f.text_field :first_name %><br/>
-  Last Name: <%= f.text_field :last_name %><br/>
-  Email: <%= f.text_field :email %><br/>
-  Password: <%= f.password_field :password %><br/>
-  <%= f.file_field :avatar %><br />
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %><br/>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %><br/>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %><br/>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %><br/>
+  </div>
+  <div class="field">
+    <%= f.label :profile_picture %><br />
+    <div class = "center-block" style="width:170px;">
+      <%= f.file_field :avatar %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% if @owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being created:</h2>
+
+      <ul>
+      <% @owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>

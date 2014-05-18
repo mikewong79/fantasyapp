@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @email.name %>!</h1>
+    <p>
+      You have received a trade offer from <%= @email.owner %>.  He would like to trade you... </p>
+     <p><%=@email.players_offered %></p>
+     <p>for</p>
+     <p><%=@email.players_wanted %></p>
+
+
+  </body>
+</html>
