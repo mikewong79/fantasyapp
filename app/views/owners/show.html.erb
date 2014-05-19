@@ -1,5 +1,5 @@
 <h1><%=@owner.first_name%> <%=@owner.last_name%></h1>
-  <%=image_tag current_owner.avatar.url, :class => "img-rounded" %>
+  <%=image_tag @owner.avatar.url, :class => "img-rounded" %>
   <% @teams.each do |t| %>
   <p><%= link_to t.name, league_team_path(t.league, t) %> in <%= link_to t.league.name + " League", league_path(t.league) %></p>
   <% end %>
