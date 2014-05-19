@@ -1,5 +1,5 @@
 class Trade < ActionMailer::Base
-  default from: "mikewong79@gmail.com" # Replace YOUR_EMAIL_ADDRESS_HERE with your gmail address
+  default from: "nba.fantasy.commish@gmail.com" # Replace YOUR_EMAIL_ADDRESS_HERE with your gmail address
 
   def offer(owner) # wizard is going to be a var that stores whichever email is passed in via the form
 

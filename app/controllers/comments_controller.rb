@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
   def new
+
     @comment = Comment.new
   end
+
+
   def create
-    @comment = Comment.new
-    if @comment.create(params.require(:comment).permit(:name, :message, :time, :league))
+    @league = League.find(params[:league_id])
+    if Comment.create(params.require(:comment).permit(:name, :message, :league, :picture))
       flash[:success]="Your message was successfully saved."
       redirect_to :back
     else
@@ -12,10 +15,10 @@ class CommentsController < ApplicationController
       redirect_to :back
     end
   end
-  def edit
-  end
-  def update
-  end
+
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to :back
   end
 end

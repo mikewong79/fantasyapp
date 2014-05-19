@@ -25,8 +25,8 @@ Fantasyapp::Application.configure do
   address:              'smtp.gmail.com',
   port:                 587,
   domain:               'google.com',
-  user_name:            'mikewong79',
-  password:             'Y2#6FAk2gb8g^w4d',
+  user_name:            'nba.fantasy.commish',
+  password:             'fantasycomm1sh',
   authentication:       'plain',
   enable_starttls_auto: true  }
 

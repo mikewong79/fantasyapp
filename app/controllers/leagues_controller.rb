@@ -21,6 +21,7 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     @teams = Team.where(:league_id => @league.id)
     @owners = Owner.all
+    @comment = Comment.new(:league => @league)
   end
 
   def edit

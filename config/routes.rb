@@ -2,11 +2,14 @@ Fantasyapp::Application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
   resources :leagues do
     resources :teams
+    resources :comments
   end
+
   resources :owners
   resources :emails, only: [:new, :create]
   get 'leagues/:league_id/teams/:id/trade' => 'teams#trade', as: :trade
   post 'emails/emailform' => 'emails#create'
+  post 'comments/' => 'comments#create'
 
   root 'leagues#index'
 
