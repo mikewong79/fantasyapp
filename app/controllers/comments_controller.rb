@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @league = League.find(params[:league_id])
-    if Comment.create(params.require(:comment).permit(:name, :message, :league, :picture))
+    if Comment.create(params.require(:comment).permit(:name, :message, :league_id, :picture))
       flash[:success]="Your message was successfully saved."
       redirect_to :back
     else

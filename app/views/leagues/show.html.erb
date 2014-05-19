@@ -4,6 +4,11 @@
   <p><%=link_to (image_tag(t.owner.avatar.url, :class => "img-thumbnail")), owner_path(@owners.find(t.owner_id)) %> - <%=link_to t.name, league_team_path(@league, t) %></p>
   <%end%>
 
+<% @league.comments.each do |c| %>
+  <p><%= c.message %></p>
+<%end%>
+
+
 <%= link_to "Add a team to this league", new_league_team_path(@league) %>
 <% if current_owner %>
 <%= render partial: "comments/comment", :controller => 'comments', :action => 'create' %>
